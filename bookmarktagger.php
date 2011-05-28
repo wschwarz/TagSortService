@@ -4,19 +4,19 @@
 function getTags($url)
 {
 	echo "Getting tags\r\n";
-	$curlUrl = "https://wschwarz1986:t@gsortiscool@api.del.icio.us/v1/posts/suggest?url=" . $url;
+	$curlUrl = "https://wschwarz1986:tagsort1scool@api.del.icio.us/v1/posts/suggest?url=" . $url;
 	$curl = curl_init();
 	curl_setopt($curl, CURLOPT_URL, $curlUrl);
 	//curl_setopt($curl, CURLOPT_HEADER, true);
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-	//curl_setopt($curl, CURLOPT_VERBOSE, true);
+	curl_setopt($curl, CURLOPT_VERBOSE, true);
 	//curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 	
 	$result = curl_exec($curl);
 		
 	print_r($result);
-	error_log(curl_error($curl));
+	print_r(curl_error($curl));
 	$returnArr = array();
 	$xml = new SimpleXMLElement($result);
 	foreach($xml->popular as $item ) {
