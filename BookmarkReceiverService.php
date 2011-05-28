@@ -49,21 +49,21 @@ function ReceiveAsXML() {
 }
 // Receive a bookmark
 if (strstr($_SERVER["CONTENT_TYPE"], "application/x-www-form-urlencoded") != FALSE) {
-	error_log("Starting Post string Processing <br />");
+	print_r("Starting Post string Processing <br />");
 	//$entry = ReceiveFromPost();
 	//$db->insert($entry);
 	$tags = getTags($entry["link"]);
 	csvEcho($tags);
-	error_log($entry["title"] . " added!");
+	print_r($entry["title"] . " added!");
 }
 else if (strstr($_SERVER["CONTENT_TYPE"], "text/xml") != FALSE) {
-	error_log("Starting XML Processing <br />");
+	print_r("Starting XML Processing <br />");
 	$entry = ReceiveAsXML();
 	//$db->insert($entry);
 	$tags = getTags($entry["link"]);
 	csvEcho($tags);
-	error_log($entry["title"] . " added!");
+	print_r($entry["title"] . " added!");
 }
-else error_log("Invalid Post data <br />");
+else print_r("Invalid Post data <br />");
 //$db->close();
 ?>
